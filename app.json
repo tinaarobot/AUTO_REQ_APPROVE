@@ -14,7 +14,11 @@
         "BOT_TOKEN": {
             "description": "Bot token @Botfather",
             "required": true      
-        }, 
+        },
+        "OWNER_ID": {
+            "description": "owner id. ",
+            "required": true
+        },
         "API_ID": {
             "description": "telegram api id here",
             "required": true
