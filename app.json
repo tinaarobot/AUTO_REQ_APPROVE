@@ -1,5 +1,5 @@
 {
-  "name": "💌 ᴄʜᴀɴɴᴇʟ ʀᴇǫ ᴀᴘᴘʀᴏᴠᴇ ʙᴏᴛ 💌",
+  "name": "💌 ᴀᴜᴛᴏ ʀᴇǫ ᴀᴘᴘʀᴏᴠᴇ ʙᴏᴛ 💌",
   "description": "This Is A Telegram For Automatically Accept Chat Join Request.",
   "logo": "https://telegra.ph/file/4bd4e28e31194e1820bf5.jpg",
   "keywords": [
@@ -18,8 +18,8 @@
             "description": "telegram api id here",
             "required": true
         },
-        "API_ID": {
-            "description": "telegram api id here",
+        "DB_URL": {
+            "description": "MongoDB URI For https://mongodb.com",
             "required": true
         },
         "API_HASH": {
