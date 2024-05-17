@@ -1,0 +1,32 @@
+{
+  "name": "💌 ᴄʜᴀɴɴᴇʟ ʀᴇǫ ᴀᴘᴘʀᴏᴠᴇ ʙᴏᴛ 💌",
+  "description": "Approve all pending join requests on your telegram channel with using user session",
+  "logo": "https://telegra.ph/file/4bd4e28e31194e1820bf5.jpg",
+  "keywords": [
+    "telegram",
+    "bot",
+    "python",
+    "program"
+  ],
+  "repository": "https://github.com/tinaarobot/AUTO_REQ_APPROVE",
+    "env": {
+        "SESSION": {
+            "description": "Program v2 String Session.",
+            "required": true      
+        }, 
+        "API_ID": {
+            "description": "telegram api id here",
+            "required": true
+        },
+        "API_HASH": {
+            "description": "telegram api hash here",
+            "required": true
+        }
+    },
+    "buildpacks":
+  [
+      {
+      "url": "heroku/python"
+    }
+   ]
+}
