@@ -37,9 +37,9 @@ async def start_handler(c, m):
 async def broadcast(c, m):
     if m.text == "/users":
         total_users = await Data.count_documents({})
-        return await m.reply(f"ᴛᴏᴛᴀʟ ᴜsᴇʀs : {total_users}")
+        return await m.reply(f"⬤ ᴛᴏᴛᴀʟ ᴜsᴇʀs ➥ {total_users}")
     b_msg = m.reply_to_message
-    sts = await m.reply_text("⬤ ʙʀᴏᴀᴅᴄᴀsᴛɪɴɢ ʏᴏᴜʀ ᴍᴇssᴀɢᴇ...")
+    sts = await m.reply_text("⬤ ʙʀᴏᴀᴅᴄᴀsᴛɪɴɢ ʏᴏᴜʀ ᴍᴇssᴀɢᴇ...♥︎")
     users = Data.find({})
     total_users = await Data.count_documents({})
     done = 0
