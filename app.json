@@ -15,7 +15,7 @@
             "description": "Bot token @Botfather",
             "required": true      
         },
-        "OWNER_ID": {
+        "OWNER": {
             "description": "owner id. ",
             "required": true
         },
@@ -23,7 +23,7 @@
             "description": "telegram api id here",
             "required": true
         },
-        "DB_URL": {
+        "MONGO_DB": {
             "description": "MongoDB URI For https://mongodb.com",
             "required": true
         },
