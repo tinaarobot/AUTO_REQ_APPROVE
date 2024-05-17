@@ -6,16 +6,16 @@ from os import environ as env
 import asyncio, datetime, time
 
 
-ACCEPTED_TEXT = "Hey {user}\n\nYour Request For {chat} Is Accepted ✅"
-START_TEXT = "Hai {}\n\nI am Auto Request Accept Bot With Working For All Channel. Add Me In Your Channel To Use"
+ACCEPTED_TEXT = "❖ ʜᴇʏ ʙᴀʙʏ ➥ {user}\n\n❖ ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴛʜᴇ ➥ {chat}"
+START_TEXT = "❖ ʜᴇʏ ʙᴀʙʏ {}\n\n● ɪ ᴀᴍ ᴀᴜᴛᴏ ʀᴇǫ ᴀᴘᴘʀᴏᴠᴇ ʙᴏᴛ.\n\n❖ ᴀᴅᴅ ᴍᴇ ɪɴ ʏᴏᴜʀ ᴄʜᴀᴛ ᴛᴏ ᴜsᴇ."
 
 API_ID = int(env.get('API_ID'))
 API_HASH = env.get('API_HASH')
 BOT_TOKEN = env.get('BOT_TOKEN')
-DB_URL = env.get('DB_URL')
-ADMINS = int(env.get('ADMINS'))
+MONGO_DB = env.get('MONGO_DB')
+OWNER = int(env.get('OWNER'))
 
-Dbclient = AsyncIOMotorClient(DB_URL)
+Dbclient = AsyncIOMotorClient(MONGO_DB)
 Cluster = Dbclient['Cluster0']
 Data = Cluster['users']
 Bot = Client(name='AutoAcceptBot', api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
@@ -27,19 +27,19 @@ async def start_handler(c, m):
     user_id = m.from_user.id
     if not await Data.find_one({'id': user_id}): await Data.insert_one({'id': user_id})
     button = [[        
-        InlineKeyboardButton('Updates', url='https://t.me/mkn_bots_updates'),
-        InlineKeyboardButton('Support', url='https://t.me/MKN_BOTZ_DISCUSSION_GROUP')
+        InlineKeyboardButton('ᴜᴘᴅᴀᴛᴇ', url='https://t.me/ROY_EDITX'),
+        InlineKeyboardButton('sᴜᴘᴘᴏʀᴛ', url='https://t.me/THE_FRIENDZ')
     ]]
     return await m.reply_text(text=START_TEXT.format(m.from_user.mention), disable_web_page_preview=True, reply_markup=InlineKeyboardMarkup(button))
           
 
-@Bot.on_message(filters.command(["broadcast", "users"]) & filters.user(ADMINS))  
+@Bot.on_message(filters.command(["broadcast", "users"]) & filters.user(OWNER))  
 async def broadcast(c, m):
     if m.text == "/users":
         total_users = await Data.count_documents({})
-        return await m.reply(f"Total Users: {total_users}")
+        return await m.reply(f"ᴛᴏᴛᴀʟ ᴜsᴇʀs : {total_users}")
     b_msg = m.reply_to_message
-    sts = await m.reply_text("Broadcasting your messages...")
+    sts = await m.reply_text("⬤ ʙʀᴏᴀᴅᴄᴀsᴛɪɴɢ ʏᴏᴜʀ ᴍᴇssᴀɢᴇ...")
     users = Data.find({})
     total_users = await Data.count_documents({})
     done = 0
@@ -67,10 +67,10 @@ async def broadcast(c, m):
             failed += 1
         done += 1
         if not done % 20:
-            await sts.edit(f"Broadcast in progress:\n\nTotal Users {total_users}\nCompleted: {done} / {total_users}\nSuccess: {success}\nFailed: {failed}")    
+            await sts.edit(f"❖ ʙʀᴏᴀᴅᴄᴀsᴛ ɪɴ ᴘʀᴏɢʀᴇss ⏤͟͟͞͞★\n\n● ᴛᴏᴛᴀʟ ᴜsᴇʀs ➥ {total_users}\n● ᴄᴏᴍᴘʟᴇᴛᴇᴅ ➥ {done} / {total_users}\n● sᴜᴄᴄᴇss ➥ {success}\n● ғᴀɪʟᴇᴅ ➥ {failed}")    
     time_taken = datetime.timedelta(seconds=int(time.time()-start_time))
     await sts.delete()
-    await message.reply_text(f"Broadcast Completed:\nCompleted in {time_taken} seconds.\n\nTotal Users {total_users}\nCompleted: {done} / {total_users}\nSuccess: {success}\nFailed: {failed}", quote=True)
+    await message.reply_text(f"❖ ʙʀᴏᴀᴅᴄᴀsᴛᴇᴅ ᴄᴏᴍᴘʟᴇᴛᴇᴅ ⏤͟͟͞͞★\n\n● ᴄᴏᴍᴘʟᴇᴛᴇᴅ ɪɴ {time_taken} sᴇᴄᴏɴᴅs.\n● ᴛᴏᴛᴀʟ ᴜsᴇʀs ➥ {total_users}\n● ᴄᴏᴍᴘʟᴇᴛᴇᴅ ➥ {done} / {total_users}\n● sᴜᴄᴄᴇss ➥ {success}\n● ғᴀɪʟᴇᴅ ➥ {failed}", quote=True)
 
   
  
